@@ -52,8 +52,7 @@ export class CartService {
   // Checkout Session
   checkoutSession(cartId:string|null , orderInfo:object){
     return this._HttpClient.post(this.baseUrl + 
-      `orders/checkout-session/${cartId}?url=https://e-commerce-h8nnx0w1h-youssef-samys-projects.vercel.app/
-` ,
+      `orders/checkout-session/${cartId}?url=e-commerce-app-umber-six.vercel.app/` ,
       {
         shippingAddress : orderInfo
       }
