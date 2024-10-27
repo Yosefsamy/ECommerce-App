@@ -1,0 +1,79 @@
+<section class="my-5"  *ngIf="cartDetails?.products?.length > 0">
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th class="text-center">Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of cartDetails.products">
+                        <td class="d-flex align-items-center position-relative">
+                            <img [src]="item.product.imageCover" class="me-2" [alt]="item.product.title">
+                            <span>{{item.product.title}}</span>
+    
+                            <div class="d-flex justify-content-center align-items-center closeIcon">
+                                <i (click)="deleteFromCart(item.product._id)" role="button" class="fa-solid fa-xmark"></i>
+                            </div>
+                        </td>
+                        <td>{{item.price | currency : "EGP "}}</td>
+                        <td>
+                            <div class="d-flex justify-content-center align-items-center border border p-1 w-50">
+                                    <p class="me-2 mb-0">{{item.count}}</p>
+    
+                                    <div class="d-flex flex-column align-items-center">
+                                        <i (click)="updateCartCount(item.product._id , item.count+1)" role="button" class="fa-solid fa-angle-up"></i>
+                                        <i (click)="updateCartCount(item.product._id , item.count-1)" role="button" class="fa-solid fa-angle-down"></i>
+                                </div>
+                            </div>
+    
+                        </td>
+                        <td>{{(item.count * item.price) | currency : "EGP "}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <button routerLink="/Home" class="btn btn-outline-dark">Return To Shop</button>
+            <button (click)="clearCart()" class="btn btn-outline-dark">Clear Cart</button>
+        </div>
+
+
+        <div class="w-50 mx-auto mt-5 px-3 py-2 border border-2 border-black text-center">
+            <h3 class="mb-3">Cart Total</h3>
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="mb-0">Subtotal :</p>
+                <p class="mb-0">{{cartDetails.totalCartPrice}}</p>
+            </div>
+
+            <hr>
+
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="mb-0">Shipping :</p>
+                <p class="mb-0">Free</p>
+            </div>
+
+            <hr>
+
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <p class="mb-0">Total :</p>
+                <p class="mb-0">{{cartDetails.totalCartPrice}}</p>
+            </div>
+
+            <button [routerLink]="['/Payment' , cartDetails._id]" class="btn px-3 py-2 my-2 checkoutBtn">Process to Checkout</button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="w-25 mx-auto py-5 my-5 " *ngIf="!cartDetails?.products?.length">
+    <h1>No Products Here...</h1>
+
+</section>

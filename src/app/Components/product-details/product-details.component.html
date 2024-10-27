@@ -1,0 +1,68 @@
+<section *ngIf="productDetails" class="my-5 py-5">
+    <div class="container">
+        <div class="row align-items-center gap-4 gy-4">
+            <div class="col-md-4">
+                <img class="img-fluid" [src]="productDetails.imageCover" [alt]="productDetails.title">
+            </div>
+
+            <div class="col-md-7">
+                <h3>{{productDetails.title}}</h3>
+                <div>
+                    <span>
+                        <i class="fa-solid fa-star text-warning"></i>
+                        <i class="fa-solid fa-star text-warning"></i>
+                        <i class="fa-solid fa-star text-warning"></i>
+                        <i class="fa-solid fa-star blankIcon"></i>
+                    </span>
+
+                    <span class="ratingQuantity ms-2">
+                        ({{productDetails.ratingsQuantity}} Reviews)
+                    </span>
+
+                    <span class="mx-2">|</span>
+
+                    <span class="small text-success">in stock</span>
+
+                </div>
+
+                <h6 class="my-2">{{productDetails.price | currency:"EGP"}}</h6>
+
+                <p class="mt-2 mb-3">{{productDetails.description}}<p>
+
+                <hr>
+
+                <div class="d-flex justify-content-between align-items-center mt-5">
+                    <button (click)="addToCart(productDetails._id)" class="btn px-3 py-2">+ Add To Cart</button>
+                    <i class="fa-regular fa-heart fs-3"></i>
+                </div>
+
+                <div class="border border-1 my-5">
+                    <div class="d-flex align-items-center gap-3 p-3">
+                        <i class="fa-solid fa-truck-moving"></i>
+                        <div class="text">
+                            <h6>Free Delivery</h6>
+                            <a href="" class="text-black small">Enter your postal code for Delivery Availability</a>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex align-items-center gap-3 p-3">
+                        <i class="fa-solid fa-rotate"></i>
+                        <div class="text">
+                            <h6>Return Delivery</h6>
+                            <p class="text-black small">
+                                <span>
+                                    Free 30 Days Delivery Returns.
+                                </span>
+                                <a href="" class="text-black">Details</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>

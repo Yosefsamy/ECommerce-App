@@ -1,0 +1,49 @@
+:host{
+    margin-top: auto;
+}
+
+footer{
+    background-color: #000000;
+}
+
+input::placeholder {
+    color: #fff;
+    opacity: 0.5;
+  }
+
+.input_mail i{
+    position: absolute;
+    right: 10px;
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}
+
+.left img{
+    width: 30px;
+    height: 65px
+}
+
+.right img{
+    width: 100%;
+    height: 40px
+}
+
+@media screen and (max-width : 992px) {
+    .col-lg-2{
+        margin-bottom: 12px;
+    }
+
+    .left img{
+        width: 30px;
+        height: 80px;
+    }
+    
+    .right img{
+        width: 50%;
+        height:60px;
+    }
+
+}

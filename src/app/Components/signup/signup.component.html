@@ -1,0 +1,137 @@
+<section class="my-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <img class="w-100 h-100" src="assets/images/a1c7dc5b68a42239311e510f54d8cd59.jpeg" alt="Auth-Image">
+            </div>
+
+            <div class="col-6">
+                <div class="w-75 mx-auto">
+                    <h2 class="mb-3">Create an account</h2>
+                    <h6 class="mb-5">Enter your details below</h6>
+    
+                    <!-- ^ Appear in case there are API errors == errorMsg=true (feh value y3nii) ^ -->
+                    <div *ngIf="errorMsg" class="alert alert-danger">
+                    {{errorMsg}}
+                    </div>
+    
+                    <form [formGroup]="registerForm" (ngSubmit)="register()">
+    
+                    <div class="form-floating mb-3">
+                        <input type="text" formControlName="name" class="form-control" id="floatingInput1" placeholder="Name...">
+                        <label for="floatingInput1">Name</label>
+                    </div>
+    
+    
+                    <!-- ! Appear in case there are errors and in case touched the name input -->
+                    <!-- ! Appear in case there are errors and in case submit the form and it is in valid -->
+                    <div class="alert alert-danger" *ngIf="registerForm.get('name')?.errors && (registerForm.get('name')?.touched || isNotValidForm)">
+    
+                        <!-- & Appear in case required -->
+                        <p class="mb-0" *ngIf="registerForm.get('name')?.getError('required')">Name is Required</p>
+    
+                        <!-- & Appear in case minlength -->
+                        <p class="mb-0" *ngIf="registerForm.get('name')?.getError('minlength')">Name Min Length is 3</p>
+    
+                        <!-- & Appear in case maxlength -->
+                        <p class="mb-0" *ngIf="registerForm.get('name')?.getError('maxlength')">Name Max Length is 15</p>
+                    </div>
+    
+    
+    
+                    <div class="form-floating mb-3">
+                        <input type="email" formControlName="email" class="form-control" id="floatingInput2" placeholder="Email...">
+                        <label for="floatingInput2">Email</label>
+                    </div>
+    
+    
+                    <!-- ! Appear in case there are errors and in case touched the email input -->
+                    <!-- ! Appear in case there are errors and in case submit the form and it is in valid -->
+                    <div class="alert alert-danger" *ngIf="registerForm.get('email')?.errors && (registerForm.get('email')?.touched || isNotValidForm)">
+    
+                        <!-- & Appear in case required -->
+                        <p class="mb-0" *ngIf="registerForm.get('email')?.getError('required')">Email is Required</p>
+    
+                        <!-- & Appear in case not match email pattern -->
+                        <p class="mb-0" *ngIf="registerForm.get('email')?.getError('email')">Email Pattern is Wrong</p>
+                    </div>
+    
+    
+                    <div class="form-floating mb-3">
+                        <input type="password" formControlName="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+    
+    
+                    <!-- ! Appear in case there are errors and in case touched the password input -->
+                    <!-- ! Appear in case there are errors and in case submit the form and it is in valid -->
+                    <div class="alert alert-danger" *ngIf="registerForm.get('password')?.errors && (registerForm.get('password')?.touched || isNotValidForm)">
+    
+                        <!-- & Appear in case required -->
+                        <p class="mb-0" *ngIf="registerForm.get('password')?.getError('required')">Password is Required</p>
+    
+                        <!-- & Appear in case not match password pattern -->
+                        <p class="mb-0" *ngIf="registerForm.get('password')?.getError('pattern')">password Pattern is Wrong , Minimum Length is 8 </p>
+                    </div>
+    
+    
+    
+                    <div class="form-floating mb-3">
+                        <input type="password" formControlName="rePassword" class="form-control" id="floatingrePassword" placeholder="rePassword">
+                        <label for="floatingrePassword">rePassword</label>
+                    </div>
+    
+    
+                    <!-- ! Appear in case there are errors and in case touched the rePassword input -->
+                    <!-- ! Appear in case there are errors and in case submit the form and it is in valid -->
+                    <div class="alert alert-danger" *ngIf="registerForm.get('rePassword')?.errors && (registerForm.get('rePassword')?.touched || isNotValidForm )">
+    
+                        <!-- & Appear in case required -->
+                        <p class="mb-0" *ngIf="registerForm.get('rePassword')?.getError('required')">rePassword is Required</p>
+    
+                        <!-- & Appear in case not match between password and rePassword -->
+                        <p class="mb-0" *ngIf="registerForm.get('rePassword')?.getError('mismatch')">Password And RePassword Not Match </p>
+                    </div>
+    
+    
+    
+                    <div class="form-floating mb-3">
+                        <input type="tel" formControlName="phone" class="form-control" id="floatingInput3" placeholder="Phone...">
+                        <label for="floatingInput3">Phone</label>
+                    </div>
+    
+                    <!-- ! Appear in case there are errors and in case touched the phone input -->
+                    <!-- ! Appear in case there are errors and in case submit the form and it is in valid -->
+                    <div class="alert alert-danger" *ngIf="registerForm.get('phone')?.errors && (registerForm.get('phone')?.touched || isNotValidForm)">
+    
+                        <!-- & Appear in case required -->
+                        <p class="mb-0" *ngIf="registerForm.get('phone')?.getError('required')">Phone Is Required</p>
+    
+                        <!-- & Appear in case not match phone pattern -->
+                        <p class="mb-0" *ngIf="registerForm.get('phone')?.getError('pattern')">Phone Is InValid</p>
+    
+                    </div>
+    
+    
+                    <button type="submit" class="btn bg-danger text-light d-block w-75 mx-auto">
+                        <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>
+                        <span *ngIf="!isLoading">Register</span>
+                    </button>
+    
+                    <button class="btn btn-outline-danger d-block w-75 my-3 mx-auto">
+                        <i class="fa-brands fa-google"></i>
+                        <span class="ms-2">sign up with goggle</span>
+                    </button>
+
+                    <p class="w-50 mx-auto">
+                        <span>Already have account?</span>
+                        <a class="text-black ms-1" routerLink="/Login">login</a>
+                    </p>
+    
+                    </form>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</section>

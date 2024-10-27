@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+.active-link{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+nav li{
+    font-size: 18px;
+}
+
+.product{
+    border : 1px solid #DB4444;
+    border-radius: 6px;
+    padding: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.favIcon{
+    position: absolute;
+    cursor: pointer;
+    top: 5px;
+    right: -50px;
+    transition: all 0.8s;
+}
+
+.product:hover .favIcon{
+    right: 9px;
+}
+
+.product:hover button{
+    transform: translateY(0);
+    background-color: #DB4444;
+    color: #fff;
+}
+
+.product button{
+    background-color: #DB4444;
+    color: #fff;
+    transform: translateY(170%);
+    transition: all 0.8s;
+}

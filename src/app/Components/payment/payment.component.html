@@ -1,0 +1,30 @@
+<section class="my-5 w-75 mx-auto">
+    <div class="container">
+        <h1 class="mb-3">Checkout Session</h1>
+        <form [formGroup]="orderForm" (ngSubmit)="handleForm()">
+    
+            <div class="form-floating mb-3">
+                <input type="text" formControlName="details" class="form-control" id="floatingInput2" placeholder="Details...">
+                <label for="floatingInput2">Details</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="tel" formControlName="phone" class="form-control" id="floatingInput2" placeholder="Phone...">
+                <label for="floatingInput2">Phone</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" formControlName="city" class="form-control" id="floatingInput2" placeholder="City...">
+                <label for="floatingInput2">City</label>
+            </div>
+            
+            <button type="submit" class="btn bg-danger text-light px-5 py-2">
+                <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>
+                <span *ngIf="!isLoading">Buy Now</span>
+            </button>
+
+        </form>
+
+    </div>
+
+</section>

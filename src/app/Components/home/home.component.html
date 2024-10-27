@@ -1,0 +1,152 @@
+<section *ngIf="products.length > 0" class="py-5">
+    <div class="container">
+        <p class="small ms-4 fw-bold">Today's</p>
+        <h2 class="mb-3">Flash Sales</h2>
+        <div class="row gy-3 mb-5">
+            <div *ngFor="let product of products | slice:0:6" class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="product shadow-md h-100">
+                    <i *ngIf="!wishlistData.includes(product._id)" (click)="addToWishlist(product._id)" class="fa-regular fa-heart fs-3 favIcon"></i>
+                    <i *ngIf="wishlistData.includes(product._id)" (click)="deleteFromWishlist(product._id)" class="fa-solid fa-heart fs-3 favIcon"></i>
+                    <header role="button" [routerLink]="['/ProductDetails' , product._id]">
+                        <img class="w-100" [src]="product.imageCover" [title]="product.title" [alt]="product.title">
+                        <h3 class="h6">{{product.title | cutText:3}}</h3>
+                        <h4 class="h6 text-danger">{{product.category.name}}</h4>
+                        <div class="d-flex justify-content-between align-items-center small">
+                            <span class="text-muted">{{product.price | currency:"EGP"}}</span>
+    
+                            <span>
+                                <i class="fa-solid fa-star text-warning"></i>
+                                <i class="fa-solid fa-star text-warning"></i>
+                                <i class="fa-solid fa-star"></i>
+                                {{product.ratingsAverage}}
+                            </span>
+                        </div>
+                    </header>
+
+                    <footer>
+                        <button (click)="addToCart(product._id)" class="btn w-100 py-1">+ Add To Cart</button>
+                    </footer>    
+
+                </div>
+
+            </div>       
+        </div>
+
+        <p class="small ms-4 fw-bold">This Month</p>
+        <h2 class="mb-3">Best Selling Products</h2>
+        <div class="row gy-3 mb-5">
+            <div *ngFor="let product of products | slice:7:13" class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="product shadow-md h-100">
+                    <i *ngIf="!wishlistData.includes(product._id)" (click)="addToWishlist(product._id)" class="fa-regular fa-heart fs-3 favIcon"></i>
+                    <i *ngIf="wishlistData.includes(product._id)" (click)="deleteFromWishlist(product._id)" class="fa-solid fa-heart fs-3 favIcon"></i>
+                    <header role="button" [routerLink]="['/ProductDetails' , product._id]">
+                        <img class="w-100" [src]="product.imageCover" [title]="product.title" [alt]="product.title">
+                        <h3 class="h6">{{product.title | cutText:3}}</h3>
+                        <h4 class="h6 text-danger">{{product.category.name}}</h4>
+                        <div class="d-flex justify-content-between align-items-center small">
+                            <span class="text-muted">{{product.price | currency:"EGP"}}</span>
+    
+                            <span>
+                                <i class="fa-solid fa-star text-warning"></i>
+                                <i class="fa-solid fa-star text-warning"></i>
+                                <i class="fa-solid fa-star"></i>
+                                {{product.ratingsAverage}}
+                            </span>
+    
+                        </div>
+    
+                </header>
+
+                <footer>
+                    <button (click)="addToCart(product._id)" class="btn w-100 py-1">+ Add To Cart</button>
+                </footer>
+
+                </div>
+            </div>
+    
+        </div>
+
+        <p class="small ms-4 fw-bold">Our Products</p>
+        <h2 class="mb-3">Explore Our Products</h2>
+        <div class="row gy-3 mb-5">
+            <div *ngFor="let product of products | slice:13:25" class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                <div class="product shadow-md h-100">
+                    <i *ngIf="!wishlistData.includes(product._id)" (click)="addToWishlist(product._id)" class="fa-regular fa-heart fs-3 favIcon"></i>
+                    <i *ngIf="wishlistData.includes(product._id)" (click)="deleteFromWishlist(product._id)" class="fa-solid fa-heart fs-3 favIcon"></i>
+                    <header role="button" [routerLink]="['/ProductDetails' , product._id]">
+                        <img class="w-100" [src]="product.imageCover" [title]="product.title" [alt]="product.title">
+                        <h3 class="h6">{{product.title | cutText:3}}</h3>
+                        <h4 class="h6 text-danger">{{product.category.name}}</h4>
+                        <div class="d-flex justify-content-between align-items-center small">
+                            <span class="text-muted">{{product.price | currency:"EGP"}}</span>
+    
+                            <span>
+                                <i class="fa-solid fa-star text-warning"></i>
+                                <i class="fa-solid fa-star text-warning"></i>
+                                <i class="fa-solid fa-star"></i>
+                                {{product.ratingsAverage}}
+                            </span>
+                        </div>
+                    </header>
+
+                    <footer>
+                        <button (click)="addToCart(product._id)" class="btn w-100 py-1">+ Add To Cart</button>
+                    </footer>    
+
+                </div>
+
+            </div>
+            
+        </div>
+
+        <p class="small ms-4 fw-bold">Featured</p>
+        <h2 class="mb-3">New Arrival</h2>
+        <div class="row g-3">
+            <div class="col-lg-6 bg-black">
+                <div class="left-image text-white position-relative">
+                    <div class="content">
+                        <h3>PlayStation 5</h3>
+                        <h6 class="text-white">Black and White version of the PS5 coming out on sale.</h6>
+                        <a href="" class="text-white">Shop Now</a>
+                    </div>
+                   </div>
+            </div>
+            <div class="col-lg-5 position-relative px-2">
+                <div class="row right h-50 mb-2">
+                    <div class="col-5 mt-3">
+                        <h3 class="text-white mt-5">Women’s Collections</h3>
+                        <h6 class="text-white">Featured woman collections that give you another vibe.</h6>
+                        <a href="" class="text-white">Shop Now</a>
+                    </div>
+                    <div class="col-6">
+                        <img class="w-100" src="assets/images/Woman.jpeg" alt="woman-image">
+                    </div>
+                </div>
+
+                <div class="row h-50">
+                    <div class="col-5 bg-black">
+                        <div class="first text-white position-relative">
+                            <div class="content">
+                                <h3>Speakers</h3>
+                                <h6 class="text-white">Amazon wireless speakers</h6>
+                                <a href="" class="text-white">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="offset-2 col-5 bg-black">
+                        <div class="second text-white position-relative">
+                            <div class="content">
+                                <h3>Perfume</h3>
+                                <h6 class="text-white">GUCCI INTENSE OUD EDP</h6>
+                                <a href="" class="text-white">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>

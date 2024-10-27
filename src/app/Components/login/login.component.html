@@ -1,0 +1,75 @@
+<section class="my-5">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <img class="w-100 h-100" src="assets/images/a1c7dc5b68a42239311e510f54d8cd59.jpeg" alt="Auth-Image">
+            </div>
+
+            <div class="col-6">
+                <div class="w-75 mx-auto">
+                    <h2 class="mb-3">Log in to Exclusive</h2>
+                    <h6 class="mb-5">Enter your details below</h6>
+    
+                    <!-- ^ Appear in case there are API errors == errorMsg=true (feh value y3nii) ^ -->
+                    <div *ngIf="errorMsg" class="alert alert-danger">
+                    {{errorMsg}}
+                    </div>
+    
+                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+    
+                    <div class="form-floating mb-3">
+                        <input type="email" formControlName="email" class="form-control" id="floatingInput2" placeholder="Email...">
+                        <label for="floatingInput2">Email</label>
+                    </div>
+    
+    
+                    <!-- ! Appear in case there are errors and in case touched the email input -->
+                    <!-- ! Appear in case there are errors and in case submit the form and it is in valid -->
+                    <div class="alert alert-danger" *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.touched || isNotValidForm)">
+    
+                        <!-- & Appear in case required -->
+                        <p class="mb-0" *ngIf="loginForm.get('email')?.getError('required')">Email is Required</p>
+    
+                        <!-- & Appear in case not match email pattern -->
+                        <p class="mb-0" *ngIf="loginForm.get('email')?.getError('email')">Email Pattern is Wrong</p>
+                    </div>
+    
+    
+
+                    <div class="form-floating mb-3">
+                        <input type="password" formControlName="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+    
+    
+                    <!-- ! Appear in case there are errors and in case touched the password input -->
+                    <!-- ! Appear in case there are errors and in case submit the form and it is in valid -->
+                    <div class="alert alert-danger" *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.touched || isNotValidForm)">
+    
+                        <!-- & Appear in case required -->
+                        <p class="mb-0" *ngIf="loginForm.get('password')?.getError('required')">Password is Required</p>
+    
+                        <!-- & Appear in case not match password pattern -->
+                        <p class="mb-0" *ngIf="loginForm.get('password')?.getError('pattern')">password Pattern is Wrong , Minimum Length is 8 </p>
+                    </div>
+
+    
+                    <div class="d-flex justify-content-between align-items-center">
+                        <button type="submit" class="btn bg-danger text-light px-5 py-2">
+                            <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>
+                            <span *ngIf="!isLoading">Login</span>
+                        </button>
+
+                        <a role="button" class="text-decoration-none text-danger">Forget Password?</a>
+                    </div>
+    
+
+
+    
+                    </form>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</section>

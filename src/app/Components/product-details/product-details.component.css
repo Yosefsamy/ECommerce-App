@@ -1,0 +1,15 @@
+section{
+    width: 85%;
+    margin: auto;
+}
+
+.blankIcon,
+.ratingQuantity{
+    color: rgb(191, 191, 191);
+}
+
+button:hover,
+button{
+    background-color: #DB4444;
+    color: #fff;
+}
