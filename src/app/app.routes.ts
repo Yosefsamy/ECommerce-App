@@ -13,6 +13,7 @@ export const routes: Routes = [
             .then((m)=>m.BlankLayoutComponent),
         children: [
             {path : "" , redirectTo : "Home" , pathMatch : "full" },
+            {path : "allorders" , redirectTo : "Home" , pathMatch : "full" },
             { path : "Home",
             loadComponent: ()=>
                 import("./Components/home/home.component")
@@ -54,12 +55,6 @@ export const routes: Routes = [
                 import("./Components/payment/payment.component")
                 .then((m)=>m.PaymentComponent),
                 title: "Payment"
-            },
-            { path : "allorders",
-            loadComponent: ()=>
-                import("./Components/all-orders/all-orders.component")
-                .then((m)=>m.AllOrdersComponent),
-                title: "Home"
             },
         ]
 
