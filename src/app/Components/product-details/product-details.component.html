@@ -31,9 +31,10 @@
 
                 <hr>
 
-                <div class="d-flex justify-content-between align-items-center mt-5">
+                <div class="d-flex justify-content-between align-items-center mt-5 position-relative">
                     <button (click)="addToCart(productDetails._id)" class="btn px-3 py-2">+ Add To Cart</button>
-                    <i class="fa-regular fa-heart fs-3"></i>
+                    <i *ngIf="!wishlistData.includes(productDetails._id)" (click)="addToWishlist(productDetails._id)" class="fa-regular fa-heart fs-3 favIcon2"></i>
+                    <i *ngIf="wishlistData.includes(productDetails._id)" (click)="deleteFromWishlist(productDetails._id)" class="fa-solid fa-heart fs-3 favIcon2"></i>
                 </div>
 
                 <div class="border border-1 my-5">

@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
   addToWishlist(prodId:string){
     this._wishlistService.addToWishlist(prodId).subscribe({
       next:(res)=>{
-      console.log(res);
+      // console.log(res);
       this.wishlistData = res.data
       this._wishlistService.wishListNumber.next(res.data.length)
       this.toastr.success(res.message)

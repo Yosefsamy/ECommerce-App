@@ -25,6 +25,14 @@ nav li{
     transition: all 0.8s;
 }
 
+.favIcon2{
+    position: absolute;
+    cursor: pointer;
+    top: 5px;
+    right: -5px;
+    transition: all 0.8s;
+}
+
 .product:hover .favIcon{
     right: 9px;
 }

@@ -4,3 +4,9 @@ form i{
     top: 12px;
     font-size: 16px;
 }
+
+@media screen and (min-width:768px){
+    span{
+        left: -2px;
+    }
+}

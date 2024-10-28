@@ -5,6 +5,7 @@ import { Product } from '../../Core/Interfaces/product';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../Core/Services/cart.service';
 import { ToastrService } from 'ngx-toastr';
+import { WishlistService } from '../../Core/Services/wishlist.service';
 
 @Component({
   selector: 'app-product-details',
@@ -17,10 +18,12 @@ export class ProductDetailsComponent implements OnInit {
 
   productId:string|null = ""
   productDetails:any = null
+  wishlistData: string[] = [] 
   constructor(
     private _activatedRoute : ActivatedRoute , 
     private _productsService : ProductsService ,
     private _cartService : CartService , 
+    private _wishlistService : WishlistService,
     private toastr: ToastrService){}
 
   ngOnInit(): void {
@@ -34,6 +37,8 @@ export class ProductDetailsComponent implements OnInit {
 
     // Call Method
     this.getProductDetails(this.productId)
+
+    this.getWishlistProducts()
   }
 
   getProductDetails(productId:string|null){
@@ -62,5 +67,48 @@ export class ProductDetailsComponent implements OnInit {
       }
     })
   }
+
+    // Get Products In Wishlist
+    getWishlistProducts(){
+      this._wishlistService.getWishlistDetails().subscribe({
+        next:(res)=>{
+          const newData = res.data.map( (item:any)=> item._id)
+          this.wishlistData = newData
+        },
+        error:(err)=>{
+          // console.log(err);
+        }
+      })
+    }
+  
+    // Add To Wishlist
+    addToWishlist(prodId:string){
+      this._wishlistService.addToWishlist(prodId).subscribe({
+        next:(res)=>{
+        // console.log(res);
+        this.wishlistData = res.data
+        this._wishlistService.wishListNumber.next(res.data.length)
+        this.toastr.success(res.message)
+        },
+        error:(err)=>{
+          // console.log(err);
+        }
+      })
+    }
+  
+    // Delete Product From Wishlist
+    deleteFromWishlist(prodId:string){
+      this._wishlistService.deleteFromWishlist(prodId).subscribe({
+        next:(res)=>{
+        // console.log(res);
+        this.wishlistData = res.data
+        this._wishlistService.wishListNumber.next(res.data.length)
+        this.toastr.success(res.message)
+        },
+        error:(err)=>{
+          // console.log(err);
+        }
+      })
+    }
 
 }
